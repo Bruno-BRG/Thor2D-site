@@ -9,6 +9,7 @@ LABEL org.opencontainers.image.title="Thor2D-site" \
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html docs.html changelog.html .nojekyll ./
 COPY css/ ./css/
+COPY js/ ./js/
 COPY assets/ ./assets/
 COPY docs/ ./docs/
 

@@ -23,9 +23,11 @@
 <section class="block">
   <div class="wrap">
     <h2>Changelog</h2>
-    <p class="lead">Every release of the Thor2D framework, newest first. Full history lives in the <a href="https://github.com/Bruno-BRG/Thor2D/releases">GitHub releases</a>.</p>
+    <p class="lead">Every release of the Thor2D framework, newest first — pulled live from <a href="https://github.com/Bruno-BRG/Thor2D/releases">GitHub releases</a> (static copy below as fallback).</p>
 
-    <div class="timeline">
+    <div class="timeline" id="releases-dynamic"></div>
+
+    <div class="timeline" id="releases-static">
       <div class="release latest">
         <div class="release-head">
           <h3>v0.10</h3><span class="badge gold">latest</span><time>2026-09-09</time>
@@ -67,7 +69,7 @@
           <li>Windows build validation</li>
         </ul>
       </div>
-    </div>
+    </div><!-- /releases-static -->
   </div>
 </section>
 
@@ -79,5 +81,6 @@
     <a href="https://github.com/Bruno-BRG/Thor2D-site">Site source</a>
   </div>
 </footer>
+<script src="js/release.js"></script>
 </body>
 </html>
