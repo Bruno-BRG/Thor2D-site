@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — Thor2D</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Thor2D logo"><span>Thor<em>2D</em></span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="docs.html">Docs</a>
+      <a href="changelog.html" class="active">Changelog</a>
+      <a href="https://github.com/Bruno-BRG/Thor2D">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Changelog</h2>
+    <p class="lead">Every release of the Thor2D framework, newest first. Full history lives in the <a href="https://github.com/Bruno-BRG/Thor2D/releases">GitHub releases</a>.</p>
+
+    <div class="timeline">
+      <div class="release latest">
+        <div class="release-head">
+          <h3>v0.10</h3><span class="badge gold">latest</span><time>2026-09-09</time>
+          <a href="https://github.com/Bruno-BRG/Thor2D/releases/tag/v0.10">release notes →</a>
+        </div>
+        <ul>
+          <li><strong>Full LOVE parity — 862 public procedures</strong>, LOVE-style wiki with porting guide</li>
+          <li>Complete ParticleSystem tuning API (emission, motion, appearance, lifecycle)</li>
+          <li>LOVE-style physics World callbacks + runtime depth (mass, filters, joint motors, enumeration)</li>
+          <li>Text/canvas/shader completion: font metrics, Text append, canvas readback, uniform query</li>
+          <li>Total audio: source getters, global transport, recording devices, listener orientation</li>
+          <li>Mesh accessors, CPU texture arrays, GPU state getters, video completion</li>
+          <li>File/math/thread/window gaps, IME + drag-and-drop event paths</li>
+          <li>New non-blocking TCP/UDP <code>net</code> module + echo example, mobile-future stubs</li>
+          <li>CLI editor scaffold (<code>tools/editor_v09</code>), <code>AGENTS.md</code> contributor rules</li>
+          <li>103/103 tests green; honest <code>.Unsupported</code> boundaries, never fake handles</li>
+        </ul>
+      </div>
+
+      <div class="release">
+        <div class="release-head">
+          <h3>v0.7</h3><time>2026-09-09</time>
+        </div>
+        <ul>
+          <li>Framework foundations: runtime, graphics, miniaudio audio, Box2D physics, ECS</li>
+          <li>Headless execution, <code>.thor</code> packaging with SHA-256 manifests</li>
+          <li>Optional FFmpeg video adapter (capability-gated)</li>
+        </ul>
+      </div>
+
+      <div class="release">
+        <div class="release-head">
+          <h3>Roadmap</h3><span class="badge">next</span>
+        </div>
+        <ul>
+          <li>Full visual editor on top of <code>Project</code> / <code>Scene</code> / <code>Asset_Id</code></li>
+          <li>Mobile export (Android/iOS): vibration, orientation, screen keyboard for real</li>
+          <li>Advanced DSP nodes, video audio-track mixing</li>
+          <li>Windows build validation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Thor2D — experimental Odin-native 2D framework.</span>
+    <span class="spacer"></span>
+    <a href="https://github.com/Bruno-BRG/Thor2D">Framework</a>
+    <a href="https://github.com/Bruno-BRG/Thor2D-site">Site source</a>
+  </div>
+</footer>
+</body>
+</html>

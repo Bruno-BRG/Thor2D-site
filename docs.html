@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — Thor2D</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Thor2D logo"><span>Thor<em>2D</em></span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="docs.html" class="active">Docs</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/Bruno-BRG/Thor2D">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-layout">
+  <aside class="sidebar">
+    <input id="doc-search" type="search" placeholder="Filter pages…">
+    <div id="doc-nav"></div>
+  </aside>
+  <main class="doc-body" id="doc-body"><p>Loading…</p></main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Thor2D wiki — mirrors <code>docs/wiki</code> in the framework repo.</span>
+    <span class="spacer"></span>
+    <a href="https://github.com/Bruno-BRG/Thor2D/tree/master/docs/wiki">Edit on GitHub</a>
+  </div>
+</footer>
+
+<script>
+const GROUPS = [
+  { title: "Start here", pages: [
+    ["Main_Page", "Main page"], ["thor2d", "thor2d runtime"], ["Api_Reference", "API reference"],
+  ]},
+  { title: "Guides", pages: [
+    ["guides/Getting_Started", "Getting started"], ["guides/Porting_From_LOVE", "Porting from LÖVE"],
+    ["guides/Capabilities", "Capabilities"], ["guides/Packaging", "Packaging"],
+    ["guides/Mobile", "Mobile"], ["guides/Editor", "Editor"],
+  ]},
+  { title: "Modules", pages: [
+    ["modules/Audio", "Audio"], ["modules/Data", "Data"], ["modules/Event", "Event"],
+    ["modules/Filesystem", "Filesystem"], ["modules/Font", "Font"], ["modules/Graphics", "Graphics"],
+    ["modules/Image", "Image"], ["modules/Joystick", "Joystick"], ["modules/Keyboard", "Keyboard"],
+    ["modules/Math", "Math"], ["modules/Mouse", "Mouse"], ["modules/Net", "Net"],
+    ["modules/Physics", "Physics"], ["modules/Sound", "Sound"], ["modules/System", "System"],
+    ["modules/Thread", "Thread"], ["modules/Timer", "Timer"], ["modules/Touch", "Touch"],
+    ["modules/Video", "Video"], ["modules/Window", "Window"],
+  ]},
+];
+
+function pageFromURL() {
+  const q = new URLSearchParams(location.search).get("page");
+  const all = GROUPS.flatMap(g => g.pages.map(p => p[0]));
+  return (q && all.includes(q)) ? q : "Main_Page";
+}
+
+function buildNav(filter = "") {
+  const nav = document.getElementById("doc-nav");
+  nav.innerHTML = "";
+  const current = pageFromURL();
+  for (const g of GROUPS) {
+    const items = g.pages.filter(([id, label]) =>
+      (id + " " + label).toLowerCase().includes(filter.toLowerCase()));
+    if (!items.length) continue;
+    const h = document.createElement("h4");
+    h.textContent = g.title;
+    nav.appendChild(h);
+    for (const [id, label] of items) {
+      const a = document.createElement("a");
+      a.href = "docs.html?page=" + id;
+      a.textContent = label;
+      if (id === current) a.classList.add("active");
+      nav.appendChild(a);
+    }
+  }
+}
+
+async function loadPage() {
+  const id = pageFromURL();
+  buildNav(document.getElementById("doc-search").value);
+  const body = document.getElementById("doc-body");
+  try {
+    const res = await fetch("docs/" + id + ".md");
+    if (!res.ok) throw new Error(res.status);
+    let md = await res.text();
+    let html = (window.marked ? marked.parse(md) : "<pre>" + md.replace(/</g, "&lt;") + "</pre>");
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    // Rewrite relative .md links to docs.html?page=… so the wiki stays in-app.
+    tmp.querySelectorAll("a[href]").forEach(a => {
+      const href = a.getAttribute("href");
+      if (!href || /^(https?:|#|mailto:)/.test(href)) return;
+      const clean = href.replace(/\.md(#.*)?$/, "$1");
+      // Resolve relative to current page dir (Main_Page & thor2d live at root).
+      const base = id.includes("/") ? id.slice(0, id.lastIndexOf("/") + 1) : "";
+      let target = clean.startsWith("../") ? clean.slice(3) : (base + clean);
+      a.setAttribute("href", "docs.html?page=" + target);
+    });
+    body.innerHTML = "";
+    body.appendChild(tmp);
+    document.title = id.split("/").pop().replace(/_/g, " ") + " — Thor2D docs";
+    window.scrollTo(0, 0);
+  } catch (e) {
+    body.innerHTML = "<p>Could not load <code>" + id + ".md</code>. Check your connection and try again.</p>";
+  }
+}
+
+document.getElementById("doc-search").addEventListener("input", e => buildNav(e.target.value));
+window.addEventListener("popstate", loadPage);
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="docs.html?page="]');
+  if (!a) return;
+  e.preventDefault();
+  history.pushState(null, "", a.getAttribute("href"));
+  loadPage();
+});
+loadPage();
+</script>
+</body>
+</html>
