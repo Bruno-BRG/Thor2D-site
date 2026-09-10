@@ -22,7 +22,7 @@ exist via `Sound_Data_Duration`, `Seek/Tell_Audio_Decoder` and
 
 ## Functions
 
-See [Api_Reference](../Api_Reference.md) for the full procedure index, and [Porting_From_LOVE](../guides/Porting_From_LOVE.md) for the LOVE mapping table.
+See [Api_Reference](../Api_Reference.md) for the full procedure index, and the [guides](../guides/Getting_Started.md) to learn the workflow.
 
 ## See Also
 

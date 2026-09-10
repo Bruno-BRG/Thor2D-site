@@ -12,4 +12,4 @@ reserved as mobile-future). Version: `THOR2D_VERSION_MAJOR/MINOR/PATCH`
 (`0/9/0`), `Thor2D_Version()`, `Is_Version_Compatible(major, minor)`
 (mirrors `love.getVersion` / `love.isVersionCompatible`).
 
-See [Api_Reference](Api_Reference.md) and [Porting_From_LOVE](guides/Porting_From_LOVE.md).
+See [Api_Reference](Api_Reference.md) for the full index, and start with [Getting started](guides/Getting_Started.md).

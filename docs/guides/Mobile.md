@@ -1,42 +1,41 @@
 # Mobile
 
-Thor2D is desktop-first (Linux AMD64 primary). This page collects the
-mobile-future surface added in v0.9: stubs that compile and run on desktop
-today, report honestly, and will light up under a future mobile backend
-without changing game code.
+Thor2D is desktop-first today (Linux AMD64 primary, Windows planned). The API
+already carries the mobile-facing surface so games written now won't need
+rewrites later — desktop implementations answer honestly where hardware or OS
+support doesn't exist yet.
 
-## Vibration
+## What works now
 
-`Vibrate(seconds)` (see [System](../modules/System.md), mirrors
-`love.system.vibrate`) requests a device buzz. Desktop has no vibration
-hardware, so any positive duration returns `.Unsupported`; non-positive
-durations are `.Invalid_Data`. A mobile backend will vibrate and return
-`.None`. Games should treat `.Unsupported` as "no haptics here" and carry
-on — never gate gameplay on it.
+- **Touch input** (`Touch_Count`, `Touch_Position`, `Get_Touch_Ids`) — full
+  lifecycle on capable backends; desktop reports no touches.
+- **Display info** (`Get_Display_Info`, `Get_Safe_Area`, `Get_Display_Orientation`)
+  — aspect-derived values where the OS exposes nothing.
+- **Power and presence** (`Get_Power_Info`, `Has_Background_Music`) — desktop
+  reports sane defaults (`nobattery`, `false`).
+- **Safe area** — lay out HUD inside `Get_Safe_Area` and notches/rounded
+  corners are handled wherever the platform reports them.
 
-```odin
-if thor2d.Vibrate(0.2) == .Unsupported {
-    // Desktop: flash the screen or play a click instead.
-}
-```
+## Honest stubs (mobile-future)
 
-## Orientation and display sleep
+These compile and run everywhere but report `.Unsupported` on desktop:
 
-`Get_Display_Orientation(ctx)` (see [Window](../modules/Window.md)) reports
-`"landscape"`, `"portrait"` or `"unknown"`. Desktop derives it from the
-window aspect (width >= height is landscape); headless is `"unknown"`. A
-mobile backend will report the sensor orientation instead.
+| Procedure | Desktop behavior |
+| --- | --- |
+| `Vibrate(seconds)` | `.Unsupported` (no vibration motor) |
+| `Set_Display_Sleep_Enabled` | Stored intent, `.Unsupported` |
+| `Game.On_Low_Memory` | Never fired (no OS signal); free caches manually |
+| `Has_Screen_Keyboard` | `false` |
 
-`Set_Display_Sleep_Enabled(ctx, enabled)` asks the OS whether the display
-may sleep (`false` = keep the screen awake during play). Desktop always
-returns `.Unsupported`; a mobile backend will honor it.
+## Writing portable games today
 
-## Portability rules
+1. Gate mobile-only calls on return values, not on platform checks.
+2. Keep touch and mouse input paths unified (tap = click) via `Action_Map`.
+3. Respect `Get_Safe_Area` for HUD and `Window_DPI_Scale` for crispness.
+4. Test the headless path in CI — it exercises the same fallbacks servers use.
 
-- Probe, don't assume: `Vibrate` / `Set_Display_Sleep_Enabled` returning
-  `.Unsupported` is the normal desktop answer, not an error to crash on.
-- `Get_Display_Orientation` returning `"unknown"` means "lay out for any
-  aspect" — keep HUD anchoring aspect-independent.
-- No mobile backend exists yet: there is no export, packaging, or store
-  flow. Editor and packaging workflows stay desktop CLI (see
-  [Editor](Editor.md), [Packaging](Packaging.md)).
+## Export outlook
+
+Android/iOS export (real vibration, orientation events, screen keyboard,
+lifecycle callbacks) is on the roadmap after the desktop editor. See the
+[Changelog](../changelog.html) for status.

@@ -43,8 +43,10 @@ const GROUPS = [
     ["Main_Page", "Main page"], ["thor2d", "thor2d runtime"], ["Api_Reference", "API reference"],
   ]},
   { title: "Guides", pages: [
-    ["guides/Getting_Started", "Getting started"], ["guides/Porting_From_LOVE", "Porting from LÖVE"],
-    ["guides/Capabilities", "Capabilities"], ["guides/Packaging", "Packaging"],
+    ["guides/Getting_Started", "Getting started"], ["guides/Core_Concepts", "Core concepts"],
+    ["guides/Graphics_Guide", "Graphics guide"], ["guides/Physics_Guide", "Physics guide"],
+    ["guides/Audio_Guide", "Audio guide"], ["guides/Capabilities", "Capabilities"],
+    ["guides/Packaging", "Packaging"], ["guides/Networking", "Networking"],
     ["guides/Mobile", "Mobile"], ["guides/Editor", "Editor"],
   ]},
   { title: "Modules", pages: [
@@ -100,6 +102,7 @@ async function loadPage() {
     tmp.querySelectorAll("a[href]").forEach(a => {
       const href = a.getAttribute("href");
       if (!href || /^(https?:|#|mailto:)/.test(href)) return;
+      if (href.endsWith(".html")) return; // site pages resolve relative to docs.html
       const clean = href.replace(/\.md(#.*)?$/, "$1");
       // Resolve relative to current page dir (Main_Page & thor2d live at root).
       const base = id.includes("/") ? id.slice(0, id.lastIndexOf("/") + 1) : "";
