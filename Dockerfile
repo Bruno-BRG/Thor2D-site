@@ -7,6 +7,10 @@ LABEL org.opencontainers.image.title="Thor2D-site" \
       org.opencontainers.image.source="https://github.com/Bruno-BRG/Thor2D-site"
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# nginx:alpine has no WORKDIR — without this, COPY lands in / and the
+# server keeps serving its default welcome page.
+WORKDIR /usr/share/nginx/html
 COPY index.html docs.html changelog.html .nojekyll ./
 COPY css/ ./css/
 COPY js/ ./js/
