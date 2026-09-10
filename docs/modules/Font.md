@@ -8,7 +8,7 @@ LOVE equivalent: `love.font`. Sources: `graphics.odin`, `graphics_state.odin`.
 
 ## Functions
 
-See [Api_Reference](../Api_Reference.md) for the full procedure index, and the [guides](../guides/Getting_Started.md) to learn the workflow.
+See [Api_Reference](../Api_Reference.md) for the full procedure index, and [Porting_From_LOVE](../guides/Porting_From_LOVE.md) for the LOVE mapping table.
 
 ## Metrics and line height (v0.10)
 

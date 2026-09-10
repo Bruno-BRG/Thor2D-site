@@ -12,7 +12,7 @@ v0.10 additions: `Transform_Get_Matrix` / `Transform_Set_Matrix` (LOVE `Transfor
 
 ## Functions
 
-See [Api_Reference](../Api_Reference.md) for the full procedure index, and the [guides](../guides/Getting_Started.md) to learn the workflow.
+See [Api_Reference](../Api_Reference.md) for the full procedure index, and [Porting_From_LOVE](../guides/Porting_From_LOVE.md) for the LOVE mapping table.
 
 ## See Also
 

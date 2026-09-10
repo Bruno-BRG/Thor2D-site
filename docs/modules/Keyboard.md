@@ -10,7 +10,7 @@ IME and text flow through events, not polling: `Text_Input` events carry committ
 
 ## Functions
 
-See [Api_Reference](../Api_Reference.md) for the full procedure index, and the [guides](../guides/Getting_Started.md) to learn the workflow.
+See [Api_Reference](../Api_Reference.md) for the full procedure index, and [Porting_From_LOVE](../guides/Porting_From_LOVE.md) for the LOVE mapping table.
 
 ## See Also
 

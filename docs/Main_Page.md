@@ -49,6 +49,7 @@ main :: proc() {
 
 ## Guides
 
+- [First_Game](guides/First_Game.md) — build a small playable Coin Run game step by step.
 - [Getting_Started](guides/Getting_Started.md) — install, first game, build, test.
 - [Core_Concepts](guides/Core_Concepts.md) — Context, handles, errors, headless mode.
 - [Graphics_Guide](guides/Graphics_Guide.md) — state, drawing, canvas, shaders, particles.
