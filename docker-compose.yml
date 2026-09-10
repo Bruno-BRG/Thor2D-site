@@ -1,0 +1,21 @@
+# Coolify / any Docker host: `docker compose up -d --build`
+services:
+  site:
+    build: .
+    image: thor2d-site:latest
+    container_name: thor2d-site
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    # Uncomment if Coolify/Traefik should route a domain to it directly:
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.thor2d.rule=Host(`thor2d.example.com`)"
+    #   - "traefik.http.routers.thor2d.entrypoints=websecure"
+    #   - "traefik.http.routers.thor2d.tls.certresolver=letsencrypt"
