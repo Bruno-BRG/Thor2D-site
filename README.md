@@ -35,4 +35,4 @@ python3 -m http.server 8000
 
 ## Deploy
 
-Any static host works (GitHub Pages, Netlify, nginx). For GitHub Pages, serve from the `master` branch root.
+Any static host works (GitHub Pages, Netlify, nginx). For GitHub Pages, serve from the `main` branch root.
