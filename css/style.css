@@ -1,16 +1,16 @@
 :root {
-  --bg: #0b0e14;
-  --bg-soft: #11161f;
-  --bg-card: #151c28;
-  --border: #232d3f;
-  --text: #e6edf3;
-  --muted: #9aa7b8;
-  --accent: #22d3ee;
-  --gold: #f5b301;
+  --bg: #ffffff;
+  --bg-soft: #f6f6f6;
+  --bg-card: #fafafa;
+  --border: #c8c8c8;
+  --text: #202020;
+  --muted: #5c5c5c;
+  --accent: #174a7c;
+  --gold: #6b4e00;
   --green: #3fb950;
   --radius: 12px;
-  --font: "Avenir Next", Avenir, "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font: Arial, Helvetica, sans-serif;
+  --mono: "DejaVu Sans Mono", Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -31,15 +31,15 @@ a:hover { text-decoration: underline; }
 /* ---------- nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(11, 14, 20, 0.92);
-  backdrop-filter: blur(8px);
+  background: #fff;
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
   display: flex; align-items: center; gap: 28px;
   max-width: 1080px; margin: 0 auto; padding: 12px 24px;
 }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; color: var(--text); }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; color: var(--text); }
+.brand small { color: var(--muted); font-weight: 400; }
 .brand:hover { text-decoration: none; }
 .brand img { width: 32px; height: 32px; }
 .brand span em { color: var(--accent); font-style: normal; }
@@ -49,7 +49,7 @@ a:hover { text-decoration: underline; }
 .nav-links a.active { color: var(--accent); }
 .btn {
   display: inline-block; padding: 10px 22px; border-radius: 8px;
-  background: var(--accent); color: #04222a !important; font-weight: 700;
+  background: var(--accent); color: #fff !important; font-weight: 700;
 }
 .btn:hover { text-decoration: none; filter: brightness(1.1); }
 .btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--text) !important; }
@@ -79,6 +79,25 @@ section.block p.lead { color: var(--muted); margin-top: 0; max-width: 720px; }
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 20px;
 }
+
+/* ---------- wiki home ---------- */
+.wiki-home { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+.wiki-heading { border-bottom: 1px solid var(--border); padding-bottom: 28px; }
+.wiki-heading h1 { margin: 4px 0 8px; font-size: 2.2rem; font-weight: 600; }
+.wiki-heading p:not(.eyebrow) { color: var(--muted); margin: 0; }
+.eyebrow { color: var(--muted); font-size: .75rem; letter-spacing: .08em; margin: 0; }
+.wiki-search { background: var(--bg-soft); border: 1px solid var(--border); padding: 22px; margin: 28px 0; }
+.wiki-search h2, .wiki-columns h2, .quickstart h2 { font-size: 1.25rem; margin: 0 0 6px; }
+.wiki-search p { color: var(--muted); margin: 0 0 16px; }
+.button { display: inline-block; border: 1px solid var(--accent); padding: 7px 12px; color: var(--accent); font-weight: 600; }
+.button:hover { background: var(--accent); color: #fff; text-decoration: none; }
+.wiki-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin: 34px 0; }
+.link-list { list-style: none; padding: 0; margin: 0; }
+.link-list li { border-bottom: 1px solid var(--border); padding: 10px 0; }
+.link-list a { display: block; font-weight: 600; }
+.link-list span { color: var(--muted); font-size: .9rem; }
+.quickstart pre { margin-top: 12px; }
+.home-note { color: var(--muted); font-size: .9rem; }
 .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
 .card h3 .ico { margin-right: 8px; }
 .card p { margin: 0; color: var(--muted); font-size: 0.93rem; }
@@ -86,7 +105,7 @@ section.block p.lead { color: var(--muted); margin-top: 0; max-width: 720px; }
 
 /* ---------- code ---------- */
 pre {
-  background: #0d1117; border: 1px solid var(--border); border-radius: var(--radius);
+  background: #f5f5f5; border: 1px solid var(--border); border-radius: var(--radius);
   padding: 18px 20px; overflow-x: auto; font-family: var(--mono); font-size: 0.88rem;
 }
 code { font-family: var(--mono); font-size: 0.88em; }
@@ -115,7 +134,7 @@ th { color: var(--muted); font-weight: 600; }
 .doc-body img { max-width: 100%; }
 #doc-search {
   width: 100%; padding: 8px 12px; margin-bottom: 12px; border-radius: 8px;
-  border: 1px solid var(--border); background: #0d1117; color: var(--text);
+  border: 1px solid var(--border); background: #fff; color: var(--text);
 }
 
 /* ---------- changelog ---------- */
@@ -142,6 +161,7 @@ footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
 footer .spacer { flex: 1; }
 
 @media (max-width: 800px) {
+  .wiki-columns { grid-template-columns: 1fr; gap: 28px; }
   .docs-layout { grid-template-columns: 1fr; }
   .sidebar { position: static; max-height: none; }
   .nav-links a:not(.btn) { display: none; }

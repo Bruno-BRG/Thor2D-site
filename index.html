@@ -3,95 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thor2D — Odin-native 2D game framework</title>
-<meta name="description" content="Thor2D is an Odin-native 2D game framework inspired by LÖVE. Simple runtime, real physics, deterministic headless mode.">
+<title>Thor2D Wiki</title>
+<meta name="description" content="Thor2D documentation, API reference and examples.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Thor2D logo"><span>Thor<em>2D</em></span></a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="docs.html">Docs</a>
-      <a href="changelog.html">Changelog</a>
-      <a href="https://github.com/Bruno-BRG/Thor2D">GitHub</a>
-      <a href="#download" class="btn">Download</a>
-    </div>
-  </div>
-</nav>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Thor2D"><span>Thor2D <small>Wiki</small></span></a>
+  <div class="nav-links"><a class="active" href="index.html">Home</a><a href="docs.html">Documentation</a><a href="changelog.html">Changelog</a><a href="https://github.com/Bruno-BRG/Thor2D">Source</a></div>
+</div></nav>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="tag"><span data-release-tag>v0.11</span> — FULL LÖVE PARITY · 864 PROCEDURES</div>
-    <h1>2D games in Odin,<br>done <em>right</em>.</h1>
-    <p class="sub">Thor2D is an Odin-native 2D game framework: a simple explicit runtime, real physics, spatial audio, packaging and a deterministic headless mode — no scripting layer, no black boxes.</p>
-    <div class="hero-cta">
-      <a class="btn" href="#download">Get Thor2D <span data-release-tag>v0.11</span></a>
-      <a class="btn ghost" href="docs.html">Read the docs</a>
-    </div>
-  </div>
-</header>
+<main class="wiki-home">
+  <header class="wiki-heading">
+    <p class="eyebrow">ODIN 2D FRAMEWORK · v0.11</p>
+    <h1>Thor2D documentation</h1>
+    <p>Reference, guides and examples for building 2D games with Thor2D.</p>
+  </header>
 
-<section class="block">
-  <div class="wrap">
-    <h2>Start in 30 seconds</h2>
-    <p class="lead">One import. Typed callbacks. No engine editor standing between you and the game loop.</p>
-<pre><code>package game
+  <section class="wiki-search"><h2>Browse the wiki</h2><p>Start with the runtime, follow a guide, or search the complete API index.</p><a class="button" href="docs.html">Open documentation →</a></section>
 
-import thor2d "thor2d"
+  <section class="wiki-columns">
+    <div><h2>Start here</h2><ul class="link-list">
+      <li><a href="docs.html?page=guides/Getting_Started">Getting started</a><span>Install, build and run</span></li>
+      <li><a href="docs.html?page=guides/First_Game">Build a small game</a><span>Coin Run tutorial</span></li>
+      <li><a href="docs.html?page=guides/Core_Concepts">Core concepts</a><span>Context, callbacks and errors</span></li>
+      <li><a href="docs.html?page=Api_Reference">API reference</a><span>Every public signature</span></li>
+    </ul></div>
+    <div><h2>Modules</h2><ul class="link-list">
+      <li><a href="docs.html?page=modules/Graphics">Graphics</a><span>Drawing, state and shaders</span></li>
+      <li><a href="docs.html?page=modules/Physics">Physics</a><span>Box2D bodies and collisions</span></li>
+      <li><a href="docs.html?page=modules/Audio">Audio</a><span>Sources, buses and effects</span></li>
+      <li><a href="docs.html?page=modules/ECS">ECS</a><span>Entity/component storage</span></li>
+    </ul></div>
+  </section>
 
-draw :: proc(ctx: ^thor2d.Context) {
-    thor2d.Clear_Screen(ctx)
-    thor2d.Draw_Circle(ctx, thor2d.Vec2{100, 100}, 32, thor2d.Green)
-}
-
-main :: proc() {
-    thor2d.Run(thor2d.Default_Config(), thor2d.Game{Draw = draw})
-}</code></pre>
-<pre><code>$ git clone https://github.com/Bruno-BRG/Thor2D.git
-$ cd Thor2D &amp;&amp; ./build.sh deps
-$ ./build.sh hello</code></pre>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <h2>Why Thor2D</h2>
-    <div class="grid">
-      <div class="card"><h3><span class="ico">⚡</span>Simple runtime</h3><p><code>Load</code>, <code>Fixed_Update</code>, <code>Update</code>, <code>Draw</code> and typed events — a tiny explicit loop you learn in minutes.</p></div>
-      <div class="card"><h3><span class="ico">🧱</span>Real physics</h3><p>Fixed-step Box2D 3.x worlds, 7 joint kinds, raycasts, sensors and event-driven collision callbacks.</p></div>
-      <div class="card"><h3><span class="ico">🔊</span>Spatial audio</h3><p>miniaudio engine: static/stream/queue sources, buses, effects, doppler, listener orientation, mic capture.</p></div>
-      <div class="card"><h3><span class="ico">🤖</span>Headless mode</h3><p>Run the same game logic with no window or GPU — deterministic sims, tests and servers.</p></div>
-      <div class="card"><h3><span class="ico">📦</span>Packaging</h3><p>Signed <code>.thor</code> packages with SHA-256 manifests. Save dir → project → archive lookup.</p></div>
-      <div class="card"><h3><span class="ico">📖</span>Complete wiki</h3><p>Every module documented with semantics, examples and capability rules — written for builders.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="download">
-  <div class="wrap">
-    <h2>Download</h2>
-    <p class="lead">Linux AMD64 is the primary target. You need the pinned Odin <code>dev-2026-09</code> toolchain (<code>./build.sh deps</code> installs it).</p>
-    <div class="grid">
-      <div class="card"><h3>📥 Source + release</h3><p>Grab the latest tag as zip/tarball, or clone and build. Prebuilt Linux binaries ship as a release asset.</p><p style="margin-top:12px"><a class="btn gold" data-release-url href="https://github.com/Bruno-BRG/Thor2D/releases/tag/v0.11">Release <span data-release-tag>v0.11</span></a>
-      <a class="btn ghost" data-release-asset=".tar.gz" style="display:none">⬇ linux binaries</a></p></div>
-      <div class="card"><h3>💻 Clone</h3><pre style="margin:0"><code>git clone https://github.com/Bruno-BRG/Thor2D.git</code></pre></div>
-      <div class="card"><h3>📚 Docs &amp; wiki</h3><p>Module reference, porting guide, API index and changelog — all on this site.</p><p style="margin-top:12px"><a class="btn ghost" href="docs.html">Browse docs</a></p></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span>Thor2D — experimental Odin-native 2D framework.</span>
-    <span class="spacer"></span>
-    <a href="https://github.com/Bruno-BRG/Thor2D">Framework</a>
-    <a href="https://github.com/Bruno-BRG/Thor2D-site">Site source</a>
-    <a href="changelog.html">Changelog</a>
-  </div>
-</footer>
-<script src="js/release.js"></script>
+  <section class="quickstart"><h2>Quick start</h2><pre><code>git clone https://github.com/Bruno-BRG/Thor2D.git
+cd Thor2D
+./build.sh deps
+./build.sh guide-game</code></pre></section>
+  <p class="home-note">The wiki is maintained alongside the framework source. See <a href="docs.html?page=Documentation_Status">documentation status</a> for curated coverage and known gaps.</p>
+</main>
+<footer><div class="wrap"><span>Thor2D Wiki</span><span class="spacer"></span><a href="https://github.com/Bruno-BRG/Thor2D">Framework source</a><a href="https://github.com/Bruno-BRG/Thor2D-site">Site source</a></div></footer>
 </body>
 </html>
