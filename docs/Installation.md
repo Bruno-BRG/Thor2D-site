@@ -10,11 +10,13 @@ binary archive contains already-built executables for its stated platform.
 | --- | --- |
 | [Current source ZIP](https://github.com/Bruno-BRG/Thor2D/archive/refs/heads/master.zip) | Latest framework, documentation and examples; use on Linux or Windows |
 | [v0.11 source ZIP](https://github.com/Bruno-BRG/Thor2D/archive/refs/tags/v0.11.zip) | Fixed v0.11 source snapshot |
+| [v0.11 Linux AMD64 binaries](https://github.com/Bruno-BRG/Thor2D/releases/download/v0.11/thor2d-v0.11-linux-amd64.tar.gz) | Prebuilt examples for Linux AMD64 |
 | [Linux AMD64 binaries — v0.10](https://github.com/Bruno-BRG/Thor2D/releases/download/v0.10/thor2d-v0.10-linux-amd64.tar.gz) | Older prebuilt release; not v0.11 |
 | [Release files](https://github.com/Bruno-BRG/Thor2D/releases) | Published versions and binary assets |
 
-At the time this page was updated, v0.11 has source archives but no uploaded
-binary assets. A Windows executable is not currently attached to these releases.
+The v0.11 binary archive contains the compiled examples, including the guide
+game. A Windows executable is not currently attached; Windows users can compile
+from the source archive using the Odin command below.
 
 ## Linux: build from source
 
