@@ -33,6 +33,15 @@ python3 -m http.server 8000
 ./sync-docs.sh [/path/to/Thor2D]
 ```
 
-## Deploy
+## Deploy to the VPS
 
-Any static host works (GitHub Pages, Netlify, nginx). For GitHub Pages, serve from the `main` branch root.
+The production target is the Docker deployment on the VPS. The deployment
+pipeline watches `main` and rebuilds this image on each commit:
+
+```sh
+docker compose up -d --build
+```
+
+The container serves the site through nginx on port 80. Configure the VPS
+reverse proxy/domain to route to the `site` service. GitHub Pages is not the
+production target.
