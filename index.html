@@ -6,7 +6,7 @@
 <title>Thor2D Wiki</title>
 <meta name="description" content="Thor2D documentation, API reference and examples.">
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-<link rel="stylesheet" href="css/style.css?v=20260911">
+<link rel="stylesheet" href="css/style.css?v=downloads-reference-2">
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
@@ -18,16 +18,24 @@
   <header class="wiki-heading">
     <p class="eyebrow">ODIN 2D FRAMEWORK · v0.11</p>
     <h1>Thor2D documentation</h1>
-    <p>Reference, guides and examples for building 2D games with Thor2D.</p>
+    <p>Installation, downloads and API reference for the Odin 2D framework.</p>
   </header>
 
-  <section class="wiki-search"><h2>Browse the wiki</h2><p>Start with the runtime, follow a guide, or search the complete API index.</p><a class="button" href="docs.html">Open documentation →</a></section>
+  <section class="wiki-search" id="downloads"><h2>Download Thor2D</h2>
+    <p>Get the source for Linux and Windows, or choose an existing binary release.</p>
+    <div class="download-links">
+      <a class="button" href="https://github.com/Bruno-BRG/Thor2D/archive/refs/heads/master.zip">Current source · ZIP</a>
+      <a class="button" href="https://github.com/Bruno-BRG/Thor2D/archive/refs/tags/v0.11.zip">v0.11 source · ZIP</a>
+      <a class="button" href="https://github.com/Bruno-BRG/Thor2D/releases/download/v0.10/thor2d-v0.10-linux-amd64.tar.gz">Linux binaries · v0.10</a>
+    </div>
+    <p class="download-note">Windows: compile from source. No Windows binary or v0.11 binary is currently attached to the releases. <a href="docs.html?page=Installation">Installation requirements</a>.</p>
+  </section>
 
   <section class="wiki-columns">
     <div><h2>Start here</h2><ul class="link-list">
-      <li><a href="docs.html?page=guides/Getting_Started">Getting started</a><span>Install, build and run</span></li>
-      <li><a href="docs.html?page=guides/First_Game">Build a small game</a><span>Coin Run tutorial</span></li>
-      <li><a href="docs.html?page=guides/Core_Concepts">Core concepts</a><span>Context, callbacks and errors</span></li>
+      <li><a href="docs.html?page=Installation">Installation</a><span>Linux and Windows requirements</span></li>
+      <li><a href="docs.html?page=thor2d">Runtime</a><span>Configuration and callbacks</span></li>
+      <li><a href="docs.html?page=Complete_API">Function reference</a><span>Signatures and implementation links</span></li>
       <li><a href="docs.html?page=Api_Reference">API reference</a><span>Every public signature</span></li>
     </ul></div>
     <div><h2>Modules</h2><ul class="link-list">
@@ -41,7 +49,7 @@
   <section class="quickstart"><h2>Quick start</h2><pre><code>git clone https://github.com/Bruno-BRG/Thor2D.git
 cd Thor2D
 ./build.sh deps
-./build.sh guide-game</code></pre></section>
+./build.sh hello</code></pre></section>
   <p class="home-note">The wiki is maintained alongside the framework source. See <a href="docs.html?page=Documentation_Status">documentation status</a> for curated coverage and known gaps.</p>
 </main>
 <footer><div class="wrap"><span>Thor2D Wiki</span><span class="spacer"></span><a href="https://github.com/Bruno-BRG/Thor2D">Framework source</a><a href="https://github.com/Bruno-BRG/Thor2D-site">Site source</a></div></footer>

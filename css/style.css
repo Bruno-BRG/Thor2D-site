@@ -47,6 +47,13 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .link-list span { color: var(--muted); font-size: .9rem; }
 .quickstart { margin-top: 30px; }
 .home-note { color: var(--muted); font-size: .9rem; }
+.download-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+.wiki-search .download-note { margin: 16px 0 0; font-size: .88rem; }
+.wrap { max-width: 1160px; margin: auto; padding: 0 24px; }
+.block { padding: 32px 0; }
+.nav-links { flex-wrap: wrap; }
+.doc-body { overflow-wrap: anywhere; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 
 /* Markdown and code */
 pre { overflow-x: auto; padding: 14px 16px; background: var(--code); border: 1px solid var(--line); font: .88rem/1.5 var(--mono); }
